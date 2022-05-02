@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const port = process.env.PORT || 5000;
 require('dotenv').config();
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 const app = express();
 
@@ -22,13 +22,21 @@ async function run() {
         await client.connect();
         const inventoryCollection = client.db('warehouseManagement').collection('inventory');
 
-        app.get('/inventory', async (req, res) => {
+        app.get('/product', async (req, res) => {
             const query = {};
             const cursor = inventoryCollection.find(query);
             const inventories = await cursor.toArray();
             res.send(inventories);
-        })
+        });
+
+        app.get('/product/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const inventory= await inventoryCollection.findOne(query);
+            res.send(inventory);
+        });
     }
+
     finally {
 
     }
