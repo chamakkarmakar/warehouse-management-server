@@ -36,6 +36,15 @@ async function run() {
             res.send(inventory);
         });
 
+        // my items
+        app.get('/myitems', async (req, res) => {
+            const email=req.query.email;
+            const query = {email:email};
+            const cursor = inventoryCollection.find(query);
+            const items = await cursor.toArray();
+            res.send(items);
+        });
+
         // add product
         app.post('/product', async(req,res)=>{
             const newProduct=req.body;
@@ -43,7 +52,6 @@ async function run() {
             res.send(result);
         })
 
-        
 
         // delete product
         app.delete('/product/:id', async (req, res) => {
