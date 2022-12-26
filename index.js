@@ -122,7 +122,7 @@ run().catch(console.dir);
 
 // root API 
 app.get('/', (req, res) => {
-    res.send('Warehouse Management Server Side');
+    res.send('Warehouse Management Server');
 })
 
 // listening to port 
