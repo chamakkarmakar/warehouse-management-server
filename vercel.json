@@ -10,6 +10,10 @@
         {
             "source": "/(.*)",
             "destination": "/index.js"
+        },
+        {
+            "source": "/product/(.*)",
+            "destination": "/product"
         }
     ]
 }
