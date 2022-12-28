@@ -8,12 +8,8 @@
     ],
     "rewrites" : [
         {
-            "source": "/(.*)",
-            "destination": "/index.js"
-        },
-        {
-            "source": "/product/(.*)",
-            "destination": "/product"
+            "source": "/product/(.*)/",
+            "destination": "/product/"
         }
     ]
 }
